@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous"
+    />
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"
+    ></script>
+    <style>
+        body {
+            background-color: #F8FAE5;
+        }
+        .container {
+            background-color: #43766C;
+            padding: 150px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #F8FAE5;
+            margin-bottom: 30px;
+        }
+        .form-label {
+            color: #F8FAE5;
+        }
+        .form-control {
+            border: 1px solid #B19470;
+            background-color: #F8FAE5;
+        }
+        .btn-primary {
+            background-color: #76453B;
+            border-color: #76453B;
+        }
+        .btn-primary:hover {
+            background-color: #B19470;
+            border-color: #B19470;
+        }
+        .card {
+            background-color: #F8FAE5;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">User Dashboard</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" action="/customer_dashboard">
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ user_info.first_name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ user_info.last_name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="e_mail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="e_mail" name="e_mail" value="{{ user_info.e_mail }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone_num" class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" id="phone_num" name="phone_num" value="{{ user_info.phone_num }}" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Update Information</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

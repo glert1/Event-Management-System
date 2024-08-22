@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Ticket</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</head>
+<style>
+  body {
+    overflow-x: hidden;
+    background-color: #F8FAE5;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .navbar {
+    background-color: #43766C !important;
+    padding: 1.5rem 3rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    color: #F8FAE5 !important;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .navbar .btn {
+    border-color: #43766C;
+    color: #43766C;
+    margin-left: 1rem;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  .navbar .btn:hover {
+    background-color: #76453B;
+    color: #fff;
+    border-color: #76453B;
+  }
+  
+  .navbar .btn-outline-danger {
+    background-color: #43766C;
+    color: #F8FAE5;
+  }
+  
+  .navbar .btn-outline-danger:hover {
+    background-color: #F8FAE5;
+    color: #d9534f;
+  }
+  
+  .bg-dark {
+    background-color: #B19470 !important;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1, h4, label {
+    color: #43766C;
+    font-weight: 600;
+  }
+  
+  .form-control, .form-select {
+    border: 2px solid #76453B;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    border-radius: 5px;
+    padding: 0.75rem;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: #43766C;
+    box-shadow: 0 0 8px rgba(67, 118, 108, 0.2);
+  }
+  
+  .btn-primary {
+    background-color: #43766C;
+    border-color: #76453B;
+    color: #F8FAE5;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #76453B;
+    border-color: #43766C;
+  }
+  
+  .btn-secondary {
+    background-color: #F8FAE5;
+    border-color: #F8FAE5;
+    color: #76453B;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #d6cbc0;
+    border-color: #d6cbc0;
+  }
+  
+  .text-warning {
+    color: #43766C !important;
+  }
+  
+  .row {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  form .row {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  form {
+    background-color: #F8FAE5;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-control {
+    background-color: #fff;
+    border: 2px solid #76453B;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .form-control:focus {
+    border-color: #43766C;
+    box-shadow: 0 0 8px rgba(67, 118, 108, 0.2);
+  }
+  
+  label {
+    font-size: 1.1rem;
+    color: #43766C;
+    margin-bottom: 0.5rem;
+  }
+  
+  input[type="submit"], .btn-primary {
+    background-color: #43766C;
+    border-color: #76453B;
+    color: #F8FAE5;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  input[type="submit"]:hover, .btn-primary:hover {
+    background-color: #76453B;
+    border-color: #43766C;
+  }
+  
+  input[type="text"], input[type="email"], input[type="password"], select {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 2px solid #76453B;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus {
+    border-color: #43766C;
+    box-shadow: 0 0 8px rgba(67, 118, 108, 0.2);
+  }
+  
+  textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 2px solid #76453B;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+  }
+  
+  textarea:focus {
+    border-color: #43766C;
+    box-shadow: 0 0 8px rgba(67, 118, 108, 0.2);
+  }
+  
+</style>
+<body class="bg-light">
+  <div>
+    <nav class="navbar navbar-light justify-content-between text-light px-5">
+      <a class="navbar-brand">Event Management System</a>
+      <form class="form-inline">
+        <a href="/" class="btn btn-outline-danger" type="submit">Home Page</a>
+        
+        {% if session['logged_in'] %}
+          <a href="/customer_dashboard" class="btn btn-outline-secondary" style="margin-right: 30px;">Edit Personal Information</a>
+          <a href="/logout" class="btn btn-outline-secondary" style="margin-right: 30px;">Logout</a>
+        {% else %}
+          <a href="/admin" class="btn btn-outline-primary" type="submit">Login</a>
+        {% endif %}
+      </form>
+    </nav>
+  </div>
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="margin: 20px auto; max-width: 80%;">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../static/images/kenny-filiaert-Q91Ew2U78oY-unsplash.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/vlah-dumitru-FvmwloIbCeQ-unsplash.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/lachy-spratt-VSkeg0xHsss-unsplash.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="row bg-dark text-light mx-5 mt-5 p-5 rounded shadow">
+    <h1 class="text-center mb-4">Buy Tickets</h1>
+    <form method="post" id="form">
+      <input type="hidden" name="ID" value="">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <label class="h4" for="first_name">First Name</label>
+            <input name="first_name" type="text" class="form-control" id="first_name" placeholder="Enter First Name" value="{{ user_info.first_name }}" required />
+          </div>
+          <div class="form-group mb-3">
+            <label class="h4" for="last_name">Last Name</label>
+            <input name="last_name" type="text" class="form-control" id="last_name" placeholder="Enter Last Name" value="{{ user_info.last_name }}" required />
+          </div>
+          <div class="form-group mb-3">
+            <label class="h4" for="phone_num">Mobile Number</label>
+            <input name="phone_num" type="tel" class="form-control" id="phone_num" placeholder="Mobile Number" value="{{ user_info.phone_num }}" required />
+          </div>
+          <div class="form-group mb-3">
+            <label class="h4" for="payment_type">Payment Type</label>
+            <select name="payment_type" class="form-select" id="payment_type" required>
+              <option selected>Select Payment Type</option>
+              <option value="Cash">Cash</option>
+              <option value="Credit Card">Credit Card</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group mb-3">
+            <label class="h4" for="e_mail">Email</label>
+            <input name="e_mail" type="email" class="form-control" id="e_mail" placeholder="Email" value="{{ user_info.e_mail }}" required />
+          </div>
+          <div class="form-group mb-3">
+            <label class="h4" for="event">Event</label>
+            <select name="Event" class="form-select" id="event" required>
+              <option value="" selected>Select Event</option>
+              {% for event in events %}
+                <option value="{{ event[0] }}" {% if event[0] == selected_event_id %}selected{% endif %}>{{ event[1] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label class="h4" for="ticket_type">Ticket Type</label>
+            <select name="ticket_type" class="form-select" id="ticket_type" required>
+              <option selected>Select Ticket Type</option>
+              <option value="General">General</option>
+              <option value="VIP">VIP</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          {% for error in errors %}
+            <h5 class="text-warning">{{ error }}</h5>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

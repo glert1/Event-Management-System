@@ -1,0 +1,27 @@
+How to Run the Program
+
+1. Setup Environment:
+   - Install Python and Flask.
+   - Install MySQL and set up the database.
+   - Create a virtual environment and install required packages using `pip install -r requirements.txt`.
+
+2. Database Configuration:
+    - Configure the database connection using `events.sql` inside the database folder.
+    -Create the tables first.
+    -Then insert data to the tables.
+    -After then add the constraints.
+
+
+3. Run the Application:
+     
+    -Inside of app.py file change the `your_password` part to your database server password.(If your     host and user is different change them too)(in our report you can find the screenshot of the code)
+    -Inside of the event-management-system-app folder run this command in terminal:
+                  `python3 app.py` (if python3 doesn’t work try python)
+
+
+4.Access the Application:
+   - Open a web browser and navigate to `http://127.0.0.1:5000`.
+   -For login as admin the username and password is ‘admin’.
+   -For login as manager the username and password is ‘manager’.
+   -You can also login as a customer using e-mail as e-mail and customer phone number as password from customer table or you can create new customer using  ‘Buy Tickets’ form.
+

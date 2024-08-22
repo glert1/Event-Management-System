@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+        <style>
+            body {
+                overflow-x: hidden;
+                
+            }
+            details {
+                border: 2px solid #43766C; 
+                background-color: #B19470; 
+                color: #F8FAE5; 
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); 
+            }
+        
+            summary {
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 1.2em;
+                transition: all 0.3s ease-in-out; 
+            }
+        
+            summary::marker {
+                content: "➤"; 
+                margin-right: 5px;
+            }
+            details[open] table {
+                background-color: #F8FAE5; 
+                color: #76453B; 
+            }
+        
+            details[open] th,
+            details[open] td {
+                border-bottom-color: #F8FAE5; 
+            }
+            h2 {
+                color: #43766C; 
+                border-bottom: 2px solid #43766C; 
+                padding-bottom: 5px;
+                margin-bottom: 20px;
+            }
+        
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+        
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #76453B; /
+            }
+        
+            th {
+                background-color: #B19470; 
+                color: #F8FAE5; 
+            }
+        
+            tbody tr:nth-child(even) {
+                background-color: #F8FAE5; 
+            }
+        
+            tbody tr:nth-child(odd) {
+                background-color: #F1FAEE; 
+            }
+        
+            tbody tr:hover {
+                background-color: #76453B; 
+                color: #F8FAE5; 
+            }
+            .form-control {
+                background-color: #f1faee; 
+                color: #43766C; 
+                border-color: #76453B; 
+            }
+        
+            .form-control:focus {
+                background-color: #F8FAE5; 
+                color: #43766C; 
+                border-color: #B19470; 
+            }
+        
+            .btn {
+                background-color: #B19470; 
+                color: #F8FAE5; 
+                border-color: #43766C; 
+            }
+        
+            .btn:hover {
+                background-color: #76453B; 
+                border-color: #43766C; 
+            }
+            .form-container {
+                background-color: #43766C;
+                color: #F8FAE5;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .form-container .form-group label {
+                font-family: 'Trebuchet MS', sans-serif;
+            }
+            .form-container .form-control {
+                background-color: #F8FAE5;
+                border: 1px solid #B19470;
+                color: #080d3a;
+                margin-bottom: 10px;
+            }
+            .form-container .form-control::placeholder {
+                color: #B19470;
+            }
+            .form-container .btn-primary {
+                background-color: #76453B;
+                border-color: #76453B;
+                font-weight: bolder;
+            }
+            .form-container .btn-primary:hover {
+                background-color: #B19470;
+                border-color: #B19470;
+            }
+           
+        </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <script>
+        function toggleForm(formId) {
+            document.getElementById('addEventForm').style.display = 'none';
+            document.getElementById('deleteEventForm').style.display = 'none';
+            document.getElementById('updateEventForm').style.display = 'none';
+            document.getElementById(formId).style.display = 'flex';
+        }
+    </script>
+    
+   
+    <script>
+        function toggleForm(formId) {
+            document.getElementById('addDistributerForm').style.display = 'none';
+            document.getElementById('deleteDistributerForm').style.display = 'none';
+            document.getElementById('updateDistributerForm').style.display = 'none';
+            document.getElementById(formId).style.display = 'flex';
+        }
+    </script>
+
+</head>
+
+<body style="background-color:#F8FAE5 ">
+    <div style="background-color: #43766C;height: 150px;align-items: center; display: flex; justify-content: center;"
+        class="text-light">
+        <h1>Event Manager</h1>
+    </div>
+    <details class="d-flex"><summary>Events</summary>
+    <div style="padding-top: 50px; margin: 30px;">
+
+        <div style="align-items: center; display: flex; justify-content: center;">
+            <h1 >Events</h1>
+        </div>
+        <table class="table">
+            <thead class="thead-dark bg-dark text-light">
+                <tr>
+                    <th scope="col"  >Event ID</th>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Event Type</th>
+                    <th scope="col">Event Location</th>
+                    <th scope="col">Event Date-Time</th>
+                    <th scope="col">Event General Ticket Price</th>
+                    <th scope="col">Event VIP Ticket Price</th>
+                    <th scope="col">Event Income</th>
+                    <th scope="col">Event Expense</th>
+                    <th scope="col">Event Details</th>
+                    <th scope="col">Event Company Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for eve in events %}
+                <tr>
+                    <th scope="row" style="color: #76453B;">{{ eve[0] }}</th>
+                    <td>{{ eve[1] }}</td>
+                    <td>{{ eve[2] }}</td>
+                    <td>{{ eve[3] }}</td>
+                    <td>{{ eve[4] }}</td>
+                    <td>{{ eve[5] }}</td>
+                    <td>{{ eve[6] }}</td>
+                    <td>{{ eve[7] }}</td>
+                    <td>{{ eve[8] }}</td>
+                    <td>{{ eve[9] }}</td>
+                    <td>{{ eve[10] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+        <div class="row" style="align-items: center; display: flex; justify-content: center;">
+            <div class="col-md-3">
+                <button id="addEventBtn" type="button" class="mb-5 btn btn-lg" onclick="toggleForm('addEventForm')">
+                    + Add new Event
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button id="updateEventBtn" type="button" class="mb-5 btn  btn-lg" onclick="toggleForm('updateEventForm')">
+                    Update Event
+                </button>
+            </div>
+            <div class="col-md-6" id="deleteEventDiv">
+                <button id="deleteEventBtn" type="button" class="mb-5 btn  btn-lg" onclick="toggleForm('deleteEventForm')">
+                    Delete Event
+                </button>
+            </div>
+
+            
+        </div>
+        
+  
+ <div class="form-container" id="addEventForm">
+    <form method="post" action="/manage_events_manager" style="width: 45vw; min-height: 20vw;">
+        <div class="form-group rounded" style="text-align: center;">
+            <label class="h2" style="margin-top: 4%; margin-bottom: 5%;">Add New Event</label>
+            <input type="text" name="ID" class="form-control w-100" placeholder="Enter Event ID" required>
+            <input type="text" name="name" class="form-control w-100" placeholder="Enter Event Name" required>
+            <input type="text" name="type" class="form-control w-100" placeholder="Enter Event Type" required>
+            <input type="text" name="location" class="form-control w-100" placeholder="Enter Event Location" required>
+            <input type="datetime-local" name="datetime" class="form-control w-100" placeholder="Enter Event Date and Time" required>
+            <input type="number" name="general" class="form-control w-100" placeholder="Enter Event General Ticket Price" required>
+            <input type="number" name="vipp" class="form-control w-100" placeholder="Enter Event VIP Ticket Price" required>
+            <input type="text" name="income" class="form-control w-100" placeholder="Enter Event Income" required>
+            <input type="text" name="expense" class="form-control w-100" placeholder="Enter Event Expense" required>
+            <textarea name="details" class="form-control w-100" placeholder="Enter Event Details" required></textarea>
+            <input type="text" name="company_id" class="form-control w-100" placeholder="Enter Company ID" required>
+        </div>
+        <div class="text-center" style="margin-top: 3%;">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>
+
+<div class="form-container" id="updateEventForm">
+    <form method="post" action="/manage_events_manager" style="width: 45vw; min-height: 20vw;">
+        <div class="form-group rounded" style="text-align: center;">
+            <label class="h2" style="margin-top: 4%; margin-bottom: 5%;">Update Event</label>
+            <select name="EventId" class="form-control w-100" required>
+                <option selected disabled>Select Event to Update</option>
+                {% for event in events %}
+                <option value="{{ event[0] }}">{{ event[1] }}</option>
+                {% endfor %}
+            </select>
+            <select name="property" class="form-control w-100" required>
+                <option selected disabled>Select Property to Update</option>
+                <option value="name">Event Name</option>
+                <option value="type">Event Type</option>
+                <option value="location">Event Location</option>
+                <option value="datetime">Event Date and Time</option>
+                <option value="general_price">Event General Ticket Price</option>
+                <option value="vip_price">Event VIP Ticket Price</option>
+                <option value="income">Event Income</option>
+                <option value="expense">Event Expense</option>
+                <option value="details">Event Details</option>
+                <option value="company_id">Company Name</option>
+            </select>
+            <input type="text" name="new_value" class="form-control w-100" placeholder="Enter New Value" required>
+        </div>
+        <div class="text-center" style="margin-top: 3%;">
+            <button type="submit" class="btn btn-primary" name="updateEvent">Update</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="form-container" id="deleteEventForm">
+    <form method="post" action="/manage_events_manager" style="width: 45vw; min-height: 20vw;">
+        <div class="form-group rounded" style="text-align: center;">
+            <label class="h2" style="margin-top: 4%; margin-bottom: 5%;">Delete Event</label>
+            <select name="EventId" class="form-control w-100">
+                <option selected>Select Event to Delete</option>
+                {% for event in events %}
+                <option value="{{ event[0] }}">{{ event[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="text-center" style="margin-top: 3%;">
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </div>
+    </form>
+</div></details>
+
+
+
+<details><summary>Distributers</summary>
+    <div style="padding-top: 50px; margin: 30px; clear: both;">
+
+        <div style=" align-items: center; display: flex; justify-content: center;">
+            <h1>Distributers</h1>
+        </div>
+        <table class="table">
+            <thead class="thead-dark bg-dark text-light">
+                <tr>
+                    <th scope="col">Distributer ID</th>
+                    <th scope="col">Distributer Name</th>
+                    <th scope="col">Distributer Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for distributer in distributers %}
+                <tr>
+                    <th scope="row" style="color: #76453B;">{{ distributer[0] }}</th>
+                    <td>{{ distributer[1] }}</td>
+                    <td>{{ distributer[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="row" style="align-items: center; display: flex; justify-content: center;">
+            <div class="col-md-3">
+                <button id="addEventBtn" type="button" class="mb-5 btn  btn-lg" onclick="toggleForm('addDistributerForm')">
+                    + Add new Distributer
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button id="updateDistributerBtn" type="button" class="mb-5 btn btn-lg" onclick="toggleForm('updateDistributerForm')">
+                    Update Distributer
+                </button>
+            </div>
+            <div class="col-md-6" id="deleteEventDiv">
+                <button id="deleteEventBtn" type="button" class="mb-5 btn  btn-lg" onclick="toggleForm('deleteDistributerForm')">
+                    Delete Distributer
+                </button>
+            </div>
+            
+        </div>
+        
+
+<div class="form-container" id="addDistributerForm">
+    <form method="post" action="/manage_distributer_manager" style="width: 45vw; min-height: 20vw;">
+        <div class="form-group rounded" style="text-align: center;">
+            <label style="margin-top: 4%; margin-bottom: 5%; font-style: Trebuchet MS; color: antiquewhite" class="h2">Add New Distributer</label>
+            <input type="text" name="ID" class="form-control w-100 border border-dark" placeholder="Enter Distributer ID" required>
+            <input type="text" name="name" class="form-control w-100 border border-dark" placeholder="Enter Distributer Name" required>
+            <input type="text" name="location" class="form-control w-100 border border-dark" placeholder="Enter Distributer Location" required>
+            
+        </div>
+        <div class="text-center" style="margin-top: 3%;">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>
+
+<div class="form-container" id="updateDistributerForm">
+    <form method="post" action="/manage_distributer_manager" style="width: 45vw; min-height: 20vw;">
+        <div class="form-group rounded" style="text-align: center;">
+            <label style="margin-top: 4%; margin-bottom: 5%; font-family: Trebuchet MS; color: antiquewhite" class="h2">Update Distributer</label>
+            <select name="DistributerId" class="form-control w-100 border border-dark" required>
+                <option selected disabled>Select Distributer to Update</option>
+                {% for distributer in distributers %}
+                <option value="{{ distributer[0] }}">{{ distributer[1] }}</option>
+                {% endfor %}
+            </select>
+            <select name="property" class="form-control w-100 border border-dark" required>
+                <option selected disabled>Select Property to Update</option>
+                <option value="ID">Distributer ID</option>
+                <option value="name">Distributer Name</option>
+                <option value="location">Distributer Location</option>
+
+            </select>
+            <input type="text" name="new_value" class="form-control w-100 border border-dark" placeholder="Enter New Value" required>
+        </div>
+        <div class="text-center" style="margin-top: 3%;">
+            <button type="submit" class="btn btn-primary" name="updateEvent">Update</button>
+        </div>
+    </form>
+</div>
+
+<div class="form-container" id="deleteDistributerForm">
+    <form method="post" action="/manage_distributer_manager" style="width: 45vw; min-height: 20vw;">
+        <div class="form-group rounded" style="text-align: center;">
+            <label style="margin-top: 4%; margin-bottom: 5%; font-style: Trebuchet MS; color: antiquewhite" class="h2">Delete Distributer</label>
+            <select name="DistributerID" class="form-control w-100 border border-dark">
+                <option selected>Select Distributer to Delete</option>
+                {% for distributer in distributers %}
+                <option value="{{ distributer[0] }}">{{ distributer[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="text-center" style="margin-top: 3%;">
+            <button type="submit" class="btn btn-primary">Delete</button>
+        </div>
+    </form>
+</div></details>
+    
+ 
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h2>Top Revenue Generating Events</h2>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        
+                        <th style="color: #43766C;">Event Name</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in top_revenue_events %}
+                    <tr>
+                        
+                        <td>{{ event[0] }}</td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <h2>Company with Most Event Types</h2>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        
+                        <th style="color: #43766C;">Company Name</th>
+                        <th style="color: #43766C;">Event Type Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for company in company_most_event_types %}
+
+                    <tr>
+                          
+                          <td>{{ company[1] }}</td>
+                          <td>{{ company[2] }}</td>
+                      </tr>
+                    
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+         
+        
+       
+  
+      <div class="row mb-4">
+          <div class="col">
+              <h2>Ranking Sales of Companies</h2>
+              <table class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          
+                          <th style="color: #43766C;">Company Name</th>
+                          <th style="color: #43766C;">Total Revenue</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for company in company_sales_ranking %}
+                      <tr>
+                          
+                          <td>{{ company[1] }}</td>
+                          <td>{{ company[2] }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  
+      <div class="row mb-4">
+          <div class="col">
+              <h2>Customer Loyalty Analysis</h2>
+              <table class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          
+                          <th style="color: #43766C;">Customer Name</th>
+                          
+                          <th style="color: #43766C;">Company Name</th>
+                          <th style="color: #43766C;">Purchase Count</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for loyalty in customer_loyalty %}
+                      <tr>
+                          
+                          <td>{{ loyalty[1] }}</td>
+                          
+                          <td>{{ loyalty[3] }}</td>
+                          <td>{{ loyalty[4] }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  
+      <div class="row mb-4">
+          <div class="col">
+              <h2>Event Type Popularity</h2>
+              <table class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                          <th style="color: #43766C;">Event Type</th>
+                          <th style="color: #43766C;">Total Tickets Sold</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for event_type in event_type_popularity %}
+                      <tr>
+                          <td>{{ event_type[0] }}</td>
+                          <td>{{ event_type[1] }}</td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
+
+    <script type="text/javascript" src="{{ url_for('static',filename='app.js') }}"></script>
+</body>
+
+</html>
